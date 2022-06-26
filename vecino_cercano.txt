@@ -1,0 +1,41 @@
+# Función de nearest neighbor: vecino.cercano()
+#
+# el argumento x debe ser una tabla de datos con coordenadas
+# en la forma data.frame(X=X,Y=Y). El data.frame puede tener
+# nombres de las filas con el argumento row.names
+# Las coordenadas (x,y) deben estar en un SRC de coordenadas planas
+# En el argumento 'shape' se puede ingresar o "convex" o "rectangle", con comillas
+#
+# 
+vecino.cercano <- function(x, shape, f){
+  distNN = spatstat.geom::nndist(x)
+  nombres = row.names(x)
+  media.obs = mean(distNN)
+  Ventana = spatstat.geom::ripras(x, shape=shape, f = f)
+  area.ventana = spatstat.geom::area.owin(Ventana)
+  Media.esp <- 0.5/sqrt(length(x[,1])/area.ventana)
+  R = media.obs / Media.esp 
+  # Rango de error de distancia observada
+  n <- length(distNN) 
+  gl <- n-1 
+  EE.obs <- sd(distNN)/sqrt(length(distNN))
+  t95.obs <- abs(qt(0.025, gl))
+  RE.obs <- EE.obs*t95.obs
+  # Rango de error de distancia esperada
+  distNN.esp <- rnorm(n = n, mean = Media.esp, sd = sd(distNN))
+  EE.esp <- sd(distNN.esp)/sqrt(length(distNN.esp))
+  t95.esp <- abs(qt(0.025, gl))
+  RE.esp <- EE.esp*t95.esp
+  # lista de resultados
+  resultado <-list(ventana = Ventana,
+                   distancias = data.frame( ID = nombres,
+                                            distancia = distNN ,
+                                            row.names = TRUE),
+                   area_ventana = area.ventana,
+                   media_observada = data.frame(Media = media.obs,
+                                                Error95 = RE.obs),
+                   media_esperada = data.frame(Media = Media.esp,
+                                               Error95 = RE.esp),
+                   R = R)
+  return(resultado)
+}
