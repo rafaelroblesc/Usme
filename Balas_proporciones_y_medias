@@ -1,0 +1,76 @@
+# BALAS, basado en las funciones de Víctor gonzález
+#
+# Para balasnum y para balaspropmod se puede insertar el argumento
+# labelposition= número, que define la posición horizontal (eje x) 
+# de la etiqueta
+#
+#
+# 1) 
+# Comparar medias y rangos de error según variable categórica 
+# modificada con ggplot
+#
+balasnum <- function(cat,num,labelposition, ...) {
+  categorias = factor(cat)
+  catn <- length(levels(categorias))
+  T = data.frame(categorias,num)
+  TR = plyr::ddply(T, "categorias", dplyr::summarise,
+             N    = length(num),
+             media = mean(num),
+             sd   = sd(num),
+             ser  = sd / sqrt(N))
+  TR$p80 = qt(0.90,  TR$N-1)
+  TR$p95 = qt(0.975, TR$N-1)
+  TR$p99 = qt(0.995, TR$N-1)
+  print(TR)
+  g <- ggplot2::ggplot(TR, ggplot2::aes(x=categorias, y=media))
+  g+
+    ggplot2::geom_errorbar(ggplot2::aes(ymin=media-ser*p80, ymax=media+ser*p80), width=0.0, size=6)+
+    ggplot2::geom_errorbar(ggplot2::aes(ymin=media-ser*p95, ymax=media+ser*p95), width=0.0, size=4)+
+    ggplot2::geom_errorbar(ggplot2::aes(ymin=media-ser*p99, ymax=media+ser*p99), width=0.0, size=2)+
+    ggplot2::geom_point(shape=3, size=7)+
+    ggplot2::ylab(deparse(substitute(num)))+ 
+    ggplot2::ggtitle("Gráfico de balas") + 
+    ggplot2::xlab(deparse(substitute(cat)))+
+    ggplot2::theme_bw()+
+    ggplot2::annotate("text", 
+                      x = labelposition, 
+                      y = max(TR$media+TR$ser*TR$p95), 
+                      label = "Confianza:  \n  \u2590\u2588\ 80%  \u2588 95%  \u2590 99%")
+  }
+#
+#
+# 2) 
+# Comparar porcentajes y rangos de error según variable categórica 
+# modificada con ggplot
+#
+balaspropmod <- function(cat1,cat2,catn, labelposition) {
+  T = data.frame(cat1,cat2) 
+  Table = xtabs(~T[,1]+T[,2])
+  TableR = RcmdrMisc::rowPercents(Table)
+  TR = data.frame(TableR)
+  TR$n = as.factor(rownames(TR))
+  TR$p = TR[,catn]/100
+  TR$ser = sqrt(TR$p*(1-TR$p))/sqrt(TR$Total)
+  TR$p80 = qt(0.90,  df=TR$Count-1)
+  TR$p95 = qt(0.975, df=TR$Count-1)
+  TR$p99 = qt(0.995, df=TR$Count-1)
+  print(cbind(Categorías = TR$n,
+              porcentaje = TR$p*100, 
+              ochenta = TR$ser*TR$p80*100, 
+              noventaycinco = TR$ser*TR$p95*100, 
+              noventaynueve = TR$ser*TR$p99*100))
+  ggplot2::ggplot(TR, ggplot2::aes(x=n, y=p)) +
+    ggplot2::theme_bw()+
+    ggplot2::geom_errorbar(ggplot2::aes(ymin=p-ser*p80, ymax=p+ser*p80),  width=0.0, size=6)+
+    ggplot2::geom_errorbar(ggplot2::aes(ymin=p-ser*p95, ymax=p+ser*p95), width=0.0, size=4)+
+    ggplot2::geom_errorbar(ggplot2::aes(ymin=p-ser*p99, ymax=p+ser*p99), width=0.0, size=2)+
+    ggplot2::geom_point(shape=3, size=7)+
+    ggplot2::ylab("Proporción")+ 
+    ggplot2::ggtitle(names(TR[(catn)])) + 
+    ggplot2::xlab(deparse(substitute(cat1)))+
+    ggplot2::annotate("text", 
+                      x = labelposition, 
+                      y = max(TR$p+TR$ser*TR$p95), 
+                      label = "Confianza:  \n  \u2590\u2588\ 80%  \u2588 95%  \u2590 99%")
+  
+}
