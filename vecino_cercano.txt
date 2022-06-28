@@ -26,6 +26,10 @@ vecino.cercano <- function(x, shape, f){
   EE.esp <- sd(distNN.esp)/sqrt(length(distNN.esp))
   t95.esp <- abs(qt(0.025, gl))
   RE.esp <- EE.esp*t95.esp
+  #	Significancia
+  SE <- (0.26136 * as.numeric(sqrt(area.ventana)))/n
+  t  <- (as.numeric(Media.esp) - media.obs)/SE
+  P <- dt(t, df = n-1)
   # lista de resultados
   resultado <-list(ventana = Ventana,
                    distancias = data.frame( ID = nombres,
@@ -36,6 +40,7 @@ vecino.cercano <- function(x, shape, f){
                                                 Error95 = RE.obs),
                    media_esperada = data.frame(Media = Media.esp,
                                                Error95 = RE.esp),
-                   R = R)
+                   R = R,
+                   p = P)
   return(resultado)
 }
