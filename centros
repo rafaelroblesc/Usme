@@ -43,9 +43,8 @@ groups.by.center <- function(x, centers){
   # 
   list(coordenadas=coordenadas, 
        centers=centers,
-       dist_to_points = pn,
        nearest_p_data_frame = nearest_p_data_frame,
-       Group = nearest_p_data_frame$ID,
+       Group = as.numeric(nearest_p_data_frame$ID),
        distance = nearest_p_data_frame$distancia
        ) 
 }
