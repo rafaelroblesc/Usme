@@ -1,0 +1,51 @@
+# Función para estimar grupos según la cercanía hasta centros arbitrarios
+# Ingresar data frame con etiquetas
+#
+# library(dplyr) 
+#
+groups.by.center <- function(x, centers){
+  # Extreaer coordenadas
+  coordX = x[,1]
+  coordY = x[,2]
+  coord_names = c(row.names(x))
+  coordenadas = data.frame(ID = coord_names,
+                            X = coordX,
+                            Y= coordY)
+  # centros
+  centersX = centers[,1]
+  centersY = centers[,2]
+  centers_names = row.names(centers)
+  centers=data.frame(ID = centers_names,
+                     X = centersX,
+                     Y = centersY)
+  #
+  pn <- NULL
+  for(i in coordenadas$ID){
+    pn[i] <- list(
+      dplyr::arrange(
+      data.frame(
+        ID = centers$ID,
+        distancia = sqrt((coordenadas$X[coordenadas$ID ==i]-centers$X)^2+
+                           (coordenadas$Y[coordenadas$ID ==i]-centers$Y)^2)), 
+          (data.frame(
+            ID = centers$ID,
+            distancia = sqrt((coordenadas$X[coordenadas$ID ==i]-centers$X)^2+
+                             (coordenadas$Y[coordenadas$ID ==i]-centers$Y)^2)
+          )
+        )$distancia
+      )
+    )
+  }
+  #
+    nearest_point = c(lapply(pn, head, n=1L))
+  #
+    nearest_p_data_frame = dplyr::bind_rows(nearest_point)
+  # 
+  list(coordenadas=coordenadas, 
+       centers=centers,
+       dist_to_points = pn,
+       nearest_p_data_frame = nearest_p_data_frame,
+       Group = nearest_p_data_frame$ID,
+       distance = nearest_p_data_frame$distancia
+       ) 
+}
