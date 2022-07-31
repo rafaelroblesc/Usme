@@ -25,12 +25,12 @@ groups.by.center <- function(x, centers){
       dplyr::arrange(
       data.frame(
         ID = centers$ID,
-        distancia = sqrt((coordenadas$X[coordenadas$ID ==i]-centers$X)^2+
-                           (coordenadas$Y[coordenadas$ID ==i]-centers$Y)^2)), 
+        distancia = sqrt((coordenadas$X[coordenadas$ID ==i]- centers$X) ^ 2+
+                           (coordenadas$Y[coordenadas$ID ==i]- centers$Y) ^ 2)), 
           (data.frame(
             ID = centers$ID,
-            distancia = sqrt((coordenadas$X[coordenadas$ID ==i]-centers$X)^2+
-                             (coordenadas$Y[coordenadas$ID ==i]-centers$Y)^2)
+            distancia = sqrt((coordenadas$X[coordenadas$ID ==i] - centers$X) ^ 2+
+                             (coordenadas$Y[coordenadas$ID ==i] - centers$Y) ^2 )
           )
         )$distancia
       )
@@ -41,9 +41,9 @@ groups.by.center <- function(x, centers){
   #
     nearest_p_data_frame = dplyr::bind_rows(nearest_point)
   # 
-  list(coordenadas=coordenadas, 
-       centers=centers,
-       Group = as.numeric(nearest_p_data_frame$ID),
+  list(coords = coordenadas, 
+       center s= centers,
+       group = as.numeric(nearest_p_data_frame$ID),
        distance = nearest_p_data_frame$distancia
        ) 
 }
