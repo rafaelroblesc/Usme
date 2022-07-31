@@ -42,7 +42,7 @@ groups.by.center <- function(x, centers){
     nearest_p_data_frame = dplyr::bind_rows(nearest_point)
   # 
   list(coords = coordenadas, 
-       center s= centers,
+       centers= centers,
        group = as.numeric(nearest_p_data_frame$ID),
        distance = nearest_p_data_frame$distancia
        ) 
