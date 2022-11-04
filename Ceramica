@@ -1,4 +1,4 @@
-Código	Tipo	Unidad_de_excavacion	Nivel	Contexto	Cultura	Periodo	Alto(cm)	Ancho(cm)	Profundidad(cm)	Diámetromax(cm)	Peso(gr)	Grosor(cm)
+Codigo	Tipo	Unidad_de_excavacion	Nivel	Contexto	Cultura	Periodo	Alto(cm)	Ancho(cm)	Profundidad(cm)	Diametromax(cm)	Peso(gr)	Grosor(cm)
 P01	Jarra	Corte	Casasector1	Funerario	Muisca	Temprano	23.5	24.1	24.1	24.1	1290	0.7
 P02	Tinaja	Perfil	3.3	Funerario	Muisca	Temprano	13.2	15.7	15.7	15.7	689	0.5
 P03	Jarra	Perfil	3.6	Funerario	Muisca	Temprano	22.1	23.2	23.2	23.2	1095	0.6
