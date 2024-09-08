@@ -11,7 +11,7 @@
 	<ExtendedData><SchemaData schemaUrl="#area_excavada">
 		<SimpleData name="Area">370</SimpleData>
 	</SchemaData></ExtendedData>
-      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-74.1205955052262,4.47799450936558 -74.1209268643845,4.47827237371747 -74.1208977408148,4.47830845580132 -74.1208785733956,4.47829447732997 -74.1208689784351,4.47830701118333 -74.1207400912042,4.47820651320388 -74.1207514170164,4.47819298244303 -74.1205646480183,4.47803438759411 -74.1205955052262,4.47799450936558</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-74.1209296562566,4.47826898266615 -74.1208861202289,4.4783230031521 -74.1205518025606,4.47805244557917 -74.1205976979169,4.47799046175372 -74.1209296562566,4.47826898266615</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
   </Placemark>
 </Folder>
 </Document></kml>
