@@ -39,7 +39,7 @@ ID X Y Area Profundidad Volumen Construcciones Forma Orienta Sexo Edad_grup Edad
 117 95202.59564 86939.80671 2.042 0.5 1.021 Ninguna Oval SO I Adulto NA NA 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 119 95187.30873 86951.76834 1.826 0.5 0.913 Escalón Oval SE F Adulto NA NA 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0
 124 95208.79983 86932.6942 0.862 0.6 0.5172 Nicho Circular S I Indeterminado NA NA 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0
-125 95219.38063 86922.51496 0.858 0.6 0.5148 Nicho Circular NE I Infantil NA NA 0 0 0 0 0 0 0  0 0 0 0 0 0 0 0 0 0 0
+125 95219.38063 86922.51496 0.858 0.6 0.5148 Nicho Circular NE I Infantil NA NA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 126 95221.27388 86924.24091 0.32 0.2 0.064 Ninguna Circular NE I Infantil NA NA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 130 95185.20581 86950.9241 1.552 0.45 0.6984 Ninguna Oval SE I Indeterminado NA NA 1 1 0 0 2 0 0 0 0 0 0 0 0 0 2 0 0 0 0
 136 95189.35318 86950.17022 1.181 0.5 0.5905 Ninguna Oval NE F Adulto NA NA 1 1 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0
