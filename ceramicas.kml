@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="ceramicas" id="ceramicas">
+	<SimpleField name="ID" type="string"></SimpleField>
+</Schema>
+<Folder><name>ceramicas</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P23</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1208441417998,4.47827100201044</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P13</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207782222998,4.47820992720644</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P12</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207774608881,4.47822728175861</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P17</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207836992327,4.47820275150818</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P18</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207803520332,4.47821130141853</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P32</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1208981464986,4.47828922419067</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P31</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1209087586837,4.47826110616252</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P11</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207908359443,4.47821705282074</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P5</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207916852819,4.47821805799972</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P34</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207050989266,4.47812464446976</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P26</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207038311784,4.47812494977221</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P27</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207033494732,4.47812418635238</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P28</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207038819523,4.47812349931786</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P8</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1208071926023,4.47819471434663</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P29</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1208411945922,4.47825179615358</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P2</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1208971192447,4.47829800322442</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P24</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1208954205374,4.47829670537172</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P36</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1209167451724,4.47826655209235</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">999</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1209075036746,4.47826001190247</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">998</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207022854349,4.47810489777624</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">997</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1206992043779,4.47809262009557</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P35</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1208921258471,4.47826461705295</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">995</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1208921765295,4.47826522777379</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P3</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207842895873,4.4782182278826</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P4</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207825956626,4.4782171796852</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1208155052617,4.47818726540356</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P20</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.120813431632,4.47818653077696</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">P33</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1209274636407,4.47828078574903</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">mocasin</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1208547429713,4.4782743842517</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">994</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207648098688,4.47818082532903</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">993</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207634025755,4.47817983655879</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#ceramicas">
+		<SimpleData name="ID">992</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>-74.1207617419264,4.47817963874301</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>
