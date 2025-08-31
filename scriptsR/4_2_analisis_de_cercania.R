@@ -14,7 +14,7 @@
 #
 ################################################################################
 #
-#  Script para la comparaciÛn de la cercanÌa de las tumbas de Usme y Portalegre
+#  Script para la comparaci√≥n de la cercan√≠a de las tumbas de Usme y Portalegre
 #
 #
 # Paquetes necesarios
@@ -27,7 +27,7 @@ library(ggplot2) # ggplot
 #
 #
 #
-# ComparaciÛn con otras comundiades del sur de Bogot·
+# Comparaci√≥n con otras comundiades del sur de Bogot√°
 #
 # Cargar datos
 #
@@ -41,7 +41,7 @@ cercania_sur <- data.frame(Sitio = c(rep("Usme", 61),
                                              rep("No",796), 
                                              rep("Si", 429)))
 #
-# FunciÛn balasprop, tomada de VÌctor Gonz·lez (2019)
+# Funci√≥n balasprop, tomada de V√≠ctor Gonz√°lez (2019)
 # 
 balasprop <- function(cat1,cat2,catn, labelposition) {
   T = data.frame(cat1,cat2) 
@@ -54,7 +54,7 @@ balasprop <- function(cat1,cat2,catn, labelposition) {
   TR$p80 = qt(0.90,  df=TR$Count-1)
   TR$p95 = qt(0.975, df=TR$Count-1)
   TR$p99 = qt(0.995, df=TR$Count-1)
-  print(cbind(CategorÌas = TR$n,
+  print(cbind(Categor√≠as = TR$n,
               porcentaje = TR$p*100, 
               ochenta = TR$ser*TR$p80*100, 
               noventaycinco = TR$ser*TR$p95*100, 
@@ -65,7 +65,7 @@ balasprop <- function(cat1,cat2,catn, labelposition) {
     geom_errorbar(aes(ymin=p-ser*p95, ymax=p+ser*p95), width=0.0, linewidth=4)+
     geom_errorbar(aes(ymin=p-ser*p99, ymax=p+ser*p99), width=0.0, linewidth=2)+
     geom_point(shape=3, size=7)+
-    ylab("ProporciÛn")+ 
+    ylab("Proporci√≥n")+ 
     ggtitle(names(TR[(catn)])) + 
     xlab(deparse(substitute(cat1)))+
     annotate("text", 
@@ -79,7 +79,7 @@ balasprop <- function(cat1,cat2,catn, labelposition) {
 balasprop(cercania_sur$Sitio, cercania_sur$menos_de_50cm, 2, 1)
 #
 #
-# ExplroaciÛn de la cercanÌa de las paredes de las tumbas de Usme
+# Explroaci√≥n de la cercan√≠a de las paredes de las tumbas de Usme
 #
 # Datos Usme
 #
@@ -88,11 +88,11 @@ cercania<- read.table("https://raw.githubusercontent.com/rafaelroblesc/Usme/refs
 #
 cercania # Imprimir
 #
-# ProporciÛn de tumbas cercanas
+# Proporci√≥n de tumbas cercanas
 #
 par(mfrow=c(1,2))
 # 
-plot(0:15,cercania[1:16 , 3], type = "l", ylab = "ProporciÛn de tumbas", xlab = "Distancia (cm)", lty = 2, xaxt = "n")
+plot(0:15,cercania[1:16 , 3], type = "l", ylab = "Proporci√≥n de tumbas", xlab = "Distancia (cm)", lty = 2, xaxt = "n")
 axis(side = 1, labels = c(as.character(row.names(cercania[1:16,]))), at = 0:15)
 points( 0:15, cercania[1:16 , 1], pch = 20, cex = 0.5)
 #
@@ -104,11 +104,11 @@ cor.test(cercania[1:16 , 1], 0:15, method = "spearman")
 modelo <- lm( cercania[, 2] ~ as.numeric(row.names(cercania)))
 modelo
 #
-# N˙mero de grupos
+# N√∫mero de grupos
 #
 cercania$Grupos
 #
-plot(0:45,cercania[1:46 , 2], type = "l", ylab = "N˙mero de grupos", xlab = "Distancia (cm)", lty = 2, xaxt = "n")
+plot(0:45,cercania[1:46 , 2], type = "l", ylab = "N√∫mero de grupos", xlab = "Distancia (cm)", lty = 2, xaxt = "n")
 axis(side = 1, labels = c(as.character(row.names(cercania[1:46,]))), at = 0:45)
 points( 0:45, cercania[1:46 , 2], pch = 20, cex = 0.5)
 #
@@ -138,7 +138,7 @@ plot(cercania[ , 2],cercania[, 7], type = "p", ylab = "Aumento", xlab = "Cantida
 #
 #
 #
-# ExplroaciÛn de la cercanÌa de las paredes de las tumbas de Portalegre
+# Explroaci√≥n de la cercan√≠a de las paredes de las tumbas de Portalegre
 #
 # Datos Portalegre
 #
@@ -147,11 +147,11 @@ cercania_p <- read.table("https://raw.githubusercontent.com/rafaelroblesc/Usme/r
 #
 cercania_p # Imprimir
 #
-# N˙mero de tumbas cercanas
+# N√∫mero de tumbas cercanas
 #
 par(mfrow=c(1,2))
 #
-plot(0:15,cercania_p[1:16 , 3], type = "l", ylab = "ProporciÛn de tumbas", xlab = "Distancia (cm)", lty = 2, xaxt = "n")
+plot(0:15,cercania_p[1:16 , 3], type = "l", ylab = "Proporci√≥n de tumbas", xlab = "Distancia (cm)", lty = 2, xaxt = "n")
 axis(side = 1, labels = c(as.character(row.names(cercania[1:16,]))), at = 0:15)
 points( 0:15, cercania_p[1:16 , 3], pch = 20, cex = 0.5)
 #
@@ -202,7 +202,7 @@ Usme 140 59 0.9672
 Usme 150 60 0.9836
 ")
 #
-# Comparar el aumento en las tumbas cercanas seg˙n la distancia
+# Comparar el aumento en las tumbas cercanas seg√∫n la distancia
 #
 par(mfrow = c(1, 1))
 #
