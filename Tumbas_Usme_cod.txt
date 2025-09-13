@@ -1,4 +1,4 @@
-ID Pequeña Mediana Grande Nicho Escalon Sin_construcciones Circular Oval Infantil Adulto Adulto_m Superposicion Ollas Jarras Venado Animales_foraneos Laja Monton_de_piedras Sin_cercamica Sin_fauna
+ID Pequeña Mediana Grande Nicho Escalon Sin_construcciones Circular Oval Infantil Adulto Adulto_mayor Superposicion Ollas Jarras Venado Animales_foraneos Laja Monton_de_piedras Sin_cercamica Sin_fauna
 1 0 1 0 0 0 1 1 0 0 1 0 0 0 1 0 0 0 0 1 1
 2 0 1 0 0 1 0 0 1 0 1 0 1 0 1 1 0 0 0 1 1
 3 0 1 0 0 0 1 1 0 0 1 0 0 0 0 0 0 0 0 1 1
@@ -60,3 +60,4 @@ ID Pequeña Mediana Grande Nicho Escalon Sin_construcciones Circular Oval Infant
 997 0 1 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 1 1
 998 0 1 0 1 0 0 1 0 0 1 0 0 0 0 0 0 1 0 1 1
 999 0 0 1 0 0 1 0 1 0 0 0 1 0 0 0 0 0 0 1 1
+
