@@ -14,7 +14,7 @@
 #
 ################################################################################
 #
-#         Script para la descripci髇 de los datos de huellas de poste,
+#         Script para la descripci贸n de los datos de huellas de poste,
 #                             tumbas y marcas
 #
 #
@@ -25,6 +25,8 @@ library(tidyverse) # dplyr ggplot2
 library(RcmdrMisc) # prop.table()
 library(sf) # read_sf()
 library(factoextra) # fviz_pca_biplot()
+library(cluster) # daisy()
+library(corrplot) # corrplot()
 #
 #
 # Parte 1: Huellas de poste
@@ -38,15 +40,15 @@ postes_usme <- read.table("https://raw.githubusercontent.com/rafaelroblesc/Usme/
 #
 postes_usme # Imprimir la tabla de datos
 #
-# Media del 醨ea
+# Media del 谩rea
 #
 mean(postes_usme$Area)
 #
-# Media del di醡etro
+# Media del di谩metro
 #
-postes_usme$diametro <- 2*sqrt(postes_usme$Area/pi)*100 # Calcular di醡etro
+postes_usme$diametro <- 2*sqrt(postes_usme$Area/pi)*100 # Calcular di谩metro
 #
-mean(postes_usme$diametro) # Media del di醡etro en cm
+mean(postes_usme$diametro) # Media del di谩metro en cm
 #
 # Rangos de error al 95% 
 #
@@ -99,7 +101,7 @@ plot(ventana$geometry, reset = TRUE)
 points(tumbas_usme$X, tumbas_usme$Y, pch = 20, col = "gold")
 #
 #
-# Parte 2.2 DEscripci髇 general de la muestra de tumbas
+# Parte 2.2 DEscripci贸n general de la muestra de tumbas
 #
 # Total de tumbas
 #
@@ -125,7 +127,7 @@ lines(density(na.omit(tumbas_usme$Edad)), col = "blue", lty = 2) # curva de dens
 table(tumbas_usme$Edad_grup)
 round(prop.table(table(tumbas_usme$Edad_grup)), 4)
 #
-# Orientaci髇
+# Orientaci贸n
 #
 table(tumbas_usme$Orienta)
 round(prop.table(table(tumbas_usme$Orienta)), 4)
@@ -144,7 +146,7 @@ round(prop.table(table(tumbas_usme$Construcciones)), 4)
 #
 mean(na.omit(tumbas_usme$Volumen))
 #
-# Rangos de error de vol鷐en a 95%
+# Rangos de error de vol煤men a 95%
 #
 n <- length(na.omit(tumbas_usme$Volumen)) 
 gl <- n-1 
@@ -156,19 +158,19 @@ RE.obs # Imprimir el rango
 #
 # Diversidad de objetos en la muestra
 #
-# Crear objeto para 韓dice de diversidad de simpson
+# Crear objeto para 铆ndice de diversidad de simpson
 #
 # Datos
 #
 diversidad_obj <- tumbas_usme %>% 
-  summarize_at(vars(Ollas, Jarras, Copas,  Mocasines, Venado, Cuy, Cricetidae, Boa, Saino, Conchas, Felidae, humanos, Volante, Propulsor), ~sum(.,na.rm=TRUE))
+  summarize_at(vars(Ollas, Jarras, Copas,  Mocasines, Venado, Cuy, Boa, Saino, Conchas, humanos, Volante, Propulsor), ~sum(.,na.rm=TRUE))
 print(round(diversidad_obj , 2))
 #
-# 蚽dice de Simpson
+# 脥ndice de Simpson
 #
-1 - sum(proportions(diversidad_obj)^2)
+sum(((diversidad_obj-1)/(sum(diversidad_obj)-1))) # Edward H. Simpson (1949) Measurement of diversity. Nature 163
 #
-# Cer醡icas
+# Cer谩micas
 #
 # Datos
 #
@@ -203,35 +205,76 @@ round(prop.table(table(marcas$Tipo)), 4)  # Tabla de proporciones
 #
 #
 #
-# Parte 4 An醠isis general de la muestra: Componentes Principales
-# An醠isis general de la muestra: ejes de variaci髇 otras variables
+# Parte 4 An谩lisis general de la muestra: Componentes Principales
+# An谩lisis general de la muestra: ejes de variaci贸n
 #
-# Crear tabla de datos num閞icos
+# Crear tabla de datos num茅ricos
 #
-tumbas_u_numerico <- data.frame(venado = tumbas_usme$Venado,
-                                jarras = tumbas_usme$Jarras,
-                                ollas = tumbas_usme$Ollas,
-                                fauna = tumbas_usme$Boa + tumbas_usme$Saino + tumbas_usme$Conchas + tumbas_usme$Felidae,
-                                montones = tumbas_usme$Monton_de_piedras,
-                                area = tumbas_usme$Area,
-                                lajas = tumbas_usme$Laja,
+tumbas_u_numerico <- data.frame(Edad = tumbas_usme$Edad_grup,
+                                脕rea = tumbas_usme$Area,
+                                Construcciones = tumbas_usme$Construcciones,
+                                Copas = tumbas_usme$Copas,
+                               "Huesos humanos" = tumbas_usme$humanos,
+                                Venado = tumbas_usme$Venado,
+                                Montones = tumbas_usme$Monton_de_piedras,
+                                "Fauna ex贸gena" = recode(tumbas_usme$Boa, "'22' = 1") + tumbas_usme$Saino + tumbas_usme$Conchas + tumbas_usme$Felidae,
+                                Lajas = tumbas_usme$Laja,
+                                Mocasines = tumbas_usme$Mocasines,
+                                Ollas = tumbas_usme$Ollas, 
+                                Jarras = tumbas_usme$Jarras,
+                                Volantes = tumbas_usme$Volante,
+                                Superposicion = tumbas_usme$Superposicion, 
                                 row.names = row.names(tumbas_usme))
+#
+# Recodificar variables
+#
+tumbas_u_numerico$Construcciones <- recode(tumbas_u_numerico$Construcciones, "'Ninguna' = 0; 'Nicho' = 1; 'Escal贸n' = 2; 'As谩n' = 3")
+tumbas_u_numerico$Superposicion <- recode(tumbas_u_numerico$Superposicion, "'No' = 0; 'Si' = 1")
+tumbas_u_numerico$脕rea <- recode(tumbas_u_numerico$脕rea, "0:median(tumbas_u_numerico$脕rea)-(IQR(tumbas_u_numerico$脕rea)/2) = 1;
+                                 median(tumbas_u_numerico$脕rea)-(IQR(tumbas_u_numerico$脕rea)/2):median(tumbas_u_numerico$脕rea) = 2;
+                                 median(tumbas_u_numerico$脕rea):median(tumbas_u_numerico$脕rea)+(IQR(tumbas_u_numerico$脕rea)/2) = 3;
+                                 median(tumbas_u_numerico$脕rea)+(IQR(tumbas_u_numerico$脕rea)/2):max(tumbas_u_numerico$脕rea) = 4")
+tumbas_u_numerico$Edad <- recode(tumbas_u_numerico$Edad, "'Indeterminado' = NA; 'Infantil' = 1; 'Adulto' = 2; 'Adulto_m' = 3")
 #
 tumbas_u_numerico # imprimir
 #
 # Escalar
 #
-tumbas_escalado <- scale(tumbas_u_numerico)
+tumbas_escalado <- scale(na.omit(tumbas_u_numerico))
 #
-# An醠isis de componentes principales
+# An谩lisis de componentes principales
 #
-#	Correlaci髇
+#	Correlaci贸n
 #
-corrr <- cor(tumbas_escalado, method = "spearman")
+corrr <- cor(na.omit(tumbas_escalado, method = "pearson"))
+par(mar = c(9,3,2,2))
+#
+# Gr谩fico de caja
+#
+boxplot(corrr,  las = 2)
+#
+# Gr谩fico de la correlaci贸n
+#
+par(mar = c(2,2,2,2))
+corrplot(corrr, diag = FALSE, tl.col = 1, order = "original", addCoef.col = 'darkgrey')
+#
+# Gr谩fico con niveles de confianza
+# 
+res1 = cor.mtest(na.omit(tumbas_escalado), method = "pearson", conf.level = 0.95)
+res2 = cor.mtest(na.omit(tumbas_escalado), method = "pearson",conf.level = 0.99)
+#
+corrplot(corrr, p.mat = res2$p, low = res2$lowCI, upp = res2$uppCI,
+         order = 'original', tl.col = 1, pch.col = 'grey', sig.level = 0.1, addrect = 3,
+         rect.col = 'navy', plotCI = 'rect', cl.pos = 'n')
+#
+# Graficar correlaci贸n y dendrograma
+#
+col <- colorRampPalette(c("darkred", "white","darkblue"))(100)
+heatmap(x = corrr, col = col, Rowv = FALSE, symm = FALSE, scale = "none")
 #
 corrr # imprimir
 #
-# An醠isis de Componentes Principales: 
+# An谩lisis de Componentes Principales: 
 #
 PC <- prcomp(tumbas_escalado, scale=TRUE)
 #
@@ -241,20 +284,20 @@ str(PC)
 PC$center
 PC$scale
 PC$rotation
-write.csv(PC$rotation, "PCA_componentes.csv" )
+#write.csv(PC$rotation, "PCA_componentes.csv" )
 PC$x
 PC$sdev
 #
-# Gr醘ico de codo:
+# Gr谩fico de codo:
 #
 plot(PC, type="lines")
 #
 # Porcetaje de varianza explicada
 #
-fviz_screeplot(PC, addlabels = TRUE, ylim = c(0, 50))
+fviz_screeplot(PC, addlabels = TRUE, ncp = 14, barfill = "Grey", barcolor = "grey", ylim = c(0, 22), main = "", ylab = "Porcentaje de varianza explicada", xlab = "Dimensiones")
 #
-# 	El gr醘ico "biplot" relaciona variables y componentes: 
-#
+# 	El gr谩fico "biplot" relaciona variables y componentes: 
+# help(fviz_pca_biplot)
 fviz_pca_biplot(PC,
                 axes = c(1, 2),
                 geom.ind = "point",
@@ -264,6 +307,108 @@ fviz_pca_biplot(PC,
                 col.var = "steelblue",
                 fill.var = "white",
                 title = NULL,
-                habillage = tumbas_usme$Edad_grup)
+                habillage = tumbas_usme$Sexo[tumbas_usme$Edad_grup != "Indeterminado"],
+                palette = c("black", "blue", "red"))
 #
 #
+# Parte 5: an谩lisis de agrupamientos
+#
+# Matrices de distancia
+#
+(DISTMAT <- daisy(tumbas_escalado, metric = "gower")) # Calcula matriz de distancia
+#
+# Evaluar si hay mucha o poca distancia entre casos
+#
+hist(DISTMAT) 
+#
+# Calcular coeficiente de aglomeraci贸n
+#
+aglomeracion <- agnes(tumbas_escalado, method = "complete")
+cat("el coeficiente de aglomeraci贸n es ", aglomeracion$ac, "\n")
+#
+# Hacer el dendrograma
+#
+summary(DISTMAT) # mediana, media y cuartiles de la matriz de distancia
+#
+hc <- hclust(DISTMAT, method = "average") # crea datos para construir dendrograma
+dendrohc <- as.dendrogram(hc)
+#
+# Ver el dendrograma
+#
+par(mfrow = c(1,1))
+par(mar = c(2,2,2,5))
+plot(dendrohc, edgePar = list(col = 1:2, lty = 2:3),
+     edge.root = TRUE, horiz = TRUE) # Plano de dendrograma
+abline(v = c(seq(0,0.6, by=0.1)), lty = 3, col = "lightgrey") # lineas
+#
+#	Agrupamiento por variables:
+par(mar = c(9,2,2,2))
+dv <- dist(1-cor(tumbas_escalado, method = "pearson")) # Correlaciones
+#
+hc <- hclust(dv, method="complete")
+plot(as.dendrogram(hc, hang=-1))
+rect.hclust(hc,k = 6, cluster = cutree(hc, 6), border = "darkgrey")
+abline(v = c(seq(0.5,4, by=0.5)), lty = 3, col = "lightgrey") # lineas
+#
+par(mar = c(2,2,2,2))
+#
+#
+#
+# Parte 6: An谩lisis de correspondencia
+#
+# Paquetes
+#
+library("FactoMineR")
+library("ca")
+#
+# An谩lisis de correspondencia
+#
+ca_ht <- CA(na.omit(tumbas_u_numerico), graph=TRUE, ncp = 10)
+#
+summary(ca_ht, nb.dec = 2, ncp = 2) # Resumen
+#
+filas <- get_ca_row(ca_ht) # Extraer filas
+str(ca_ht) # Revisar
+ca_ht # Imprimir
+#
+# Coordenadas
+#
+filas$coord
+#
+# Porcentaje de cosntribuci贸n
+#
+filas$contrib
+#
+# Graficar
+#
+fviz_ca_row(ca_ht, col.row = "cos2",
+            gradient.cols = c("orange", "yellow","salmon"), 
+            repel = TRUE)
+#
+# Contribuci贸n de los casos a las dimensiones
+#
+corrplot(filas$cos2, is.corr=FALSE)
+#
+# Extraer columnas
+#
+cols <- get_ca_col(ca_ht)
+#
+# Coordenadas
+#
+cols$coord
+#
+# Porcentaje de cosntribuci贸n
+#
+cols$contrib
+#
+cols$cos2
+#
+# Graficar Dimensiones 1 y 2
+#
+fviz_ca_col(ca_ht, col.col = "cos2", 
+            gradient.cols = c("grey","salmon","steelblue"),
+            repel = TRUE)
+#
+# Graficar con casos
+#
+fviz_ca_biplot(ca_ht, repel = TRUE)
