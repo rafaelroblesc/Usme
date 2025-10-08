@@ -58,5 +58,6 @@ ID X Y Area Profundidad Volumen Construcciones Forma Orienta Sexo Edad_grup Edad
 993 95214.00146 86927.09835 0.298 0.2 0.0596 Ninguna Oval Suroriente Indeterminado Infantil NA NA 0 No 0 No 0 No 0 No 11 Si 11 Si 0 0 0 0 0 0 0 0 0 0 0 0 Ninguna No_Marcada 0 0 0 0 0 0 0
 995 95221.89085 86925.73292 1.844 0.6 1.1064 Escalón Oval Suroriente Indeterminado Adulto NA NA 0 No 0 No 0 No 10 Si 10 Si 10 Si 0 0 0 0 0 0 0 0 0 0 0 0 Ninguna No_Marcada 0 0 0 0 0 0 0
 997 95220.13272 86924.0539 1.184 0.2 0.2368 Ninguna Circular NA Indeterminado Infantil NA NA 0 No 0 No 0 No 10 Si 10 Si 10 Si 0 0 0 0 0 0 0 0 0 0 0 0 Ninguna No_Marcada 0 0 0 0 0 0 0
-998 95214.68654 86931.2485 0.891 0.5 0.4455 Nicho Circular NA Indeterminado Adulto NA NA 0 No 0 No 0 No 0 No 0 No 0 No 0 0 0 0 0 0 0 0 0 1 0 0 Laja Marcada 0 0 0 0 0 0 0
+998 95214.654	86930.07697 0.891 0.5 0.4455 Nicho Circular NA Indeterminado Adulto NA NA 0 No 0 No 0 No 0 No 0 No 0 No 0 0 0 0 0 0 0 0 0 1 0 0 Laja Marcada 0 0 0 0 0 0 0
 999 95198.60369 86941.5757 1.714 0.7 1.1998 Ninguna Oval Sur Indeterminado Indeterminado NA NA 4 Si 4 Si 7 Si 4 Si 4 Si 4 Si 0 0 0 0 0 0 0 0 0 0 0 0 Ninguna No_Marcada 0 0 0 0 0 0 0
+
