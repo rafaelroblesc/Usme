@@ -14,8 +14,8 @@
 #
 ################################################################################
 #
-#       Script para el análisis espacial de las huellas de poste de la 
-#     comunidad local de Usme. Análisis del vecino más cercano y k medias
+#       Script para el anÃ¡lisis espacial de las huellas de poste de la 
+#     comunidad local de Usme. AnÃ¡lisis del vecino mÃ¡s cercano y k medias
 #
 #
 # Paquetes necesarios: sf, spatstat y ggplot2
@@ -26,7 +26,7 @@ library(ggplot2) # ggplot() ; aes()
 #
 #
 #
-# Parte 1: Análisis del vecino más cercano, Script basado en González (2019)                 
+# Parte 1: AnÃ¡lisis del vecino mÃ¡s cercano, Script basado en GonzÃ¡lez (2019)                 
 #
 # Cargar datos de los centroides de los tumbas desde github
 #
@@ -68,7 +68,7 @@ points(tumbas_usme$X, tumbas_usme$Y, pch = 20, col = "gold")
 n <- length(tumbas_usme[,1])
 n # imprimir n = 61
 #
-# Cacular vector de distancias al vecino más cercano
+# Cacular vector de distancias al vecino mÃ¡s cercano
 #
 distNN <- nndist(tumbas_usme) # Distancias al vecino mas cercano
 nombres <- row.names(tumbas_usme) # Extraer los nombres de filas
@@ -134,7 +134,7 @@ t  <- (as.numeric(media_esp) - media_obs)/SE # Valor t
 P <- as.numeric(dt(t, df = n - 1)) # Valor p
 P# imprimir
 #
-cat("Hay una confianza del", round((1-P), digits = 4)*100, "% de que el patrón aleatorio no se deba a un error del muestreo")
+cat("Hay una confianza del", round((1-P), digits = 4)*100, "% de que el patrÃ³n aleatorio no se deba a un error del muestreo")
 #
 # lista de resultados
 # 
@@ -165,7 +165,7 @@ axis(side = 1, at = 1:catn, labels = row.names(medias))
 #
 #
 #
-# Parte 2: K medias, basado en los scripts de González (2019)                        
+# Parte 2: K medias, basado en los scripts de GonzÃ¡lez (2019)                        
 #
 #
 # Plano de densidad de las tumbas
@@ -190,7 +190,7 @@ wss # imprimir la suma de los cuadrados de 1 a 10 grupos
 #	Plano con 5 grupos
 #
 plot(1:5,wss[1:5],type="b",xlab="Numero de Grupos", ylab="Suma de cuadrados",
-     main="Gráfico de suma de cuadrados para k+1 grupos", pch=16, cex=1, col = "darkgrey", lty = 2)
+     main="GrÃ¡fico de suma de cuadrados para k+1 grupos", pch=16, cex=1, col = "darkgrey", lty = 2)
 abline(v=2, col=2, lty=2) # agrega la linea del numero de grupos
 #
 #	K medias para 2 grupos
