@@ -14,7 +14,7 @@
 #
 ################################################################################
 #
-#    Script para la comparación de las tumbas superpuestas y no superpuestas
+#    Script para la comparaciÃ³n de las tumbas superpuestas y no superpuestas
 #
 #
 #
@@ -61,7 +61,7 @@ plot(ventana$geometry, reset = TRUE)
 points(tumbas_usme$X[tumbas_usme$Superposicion == "Si"], tumbas_usme$Y[tumbas_usme$Superposicion == "Si"], pch = 20, col = "gold")
 #
 #
-# Comparación de variables según si las tumbas están superpuestas o no
+# ComparaciÃ³n de variables segÃºn si las tumbas estÃ¡n superpuestas o no
 #
 # 1) Sexo
 #
@@ -111,7 +111,7 @@ round(chisq.test(resumen)$expected, 2)
 #
 assocstats(resumen) # V de Cramer = 0.117 
 #
-# 3) Orientación
+# 3) OrientaciÃ³n
 #
 # Tabla de frecuencias
 #
