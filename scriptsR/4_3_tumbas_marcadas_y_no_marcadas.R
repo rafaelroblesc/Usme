@@ -14,7 +14,7 @@
 #
 ################################################################################
 #
-#       Script para la comparaci�n de las tumbas marcadas y no marcadas
+#       Script para la comparación de las tumbas marcadas y no marcadas
 #
 #
 #
@@ -57,7 +57,7 @@ chisq.test(table(tumbas_usme$Marcada, tumbas_usme$Construcciones)) # X-squared =
 #
 round(chisq.test(table(tumbas_usme$Marcada, tumbas_usme$Construcciones))$expected, 2)
 #
-# marcadas vs no marcadas, orientaci�n
+# marcadas vs no marcadas, orientación
 #
 table(tumbas_usme$Marcada, tumbas_usme$Orienta)
 #
@@ -98,7 +98,7 @@ round(chisq.test(table(tumbas_usme$Marcada, tumbas_usme$Sexo))$expected, 2)
 #
 #
 #
-# Parte 2: An�lisis del vecino m�s cercano de las marcas
+# Parte 2: Análisis del vecino más cercano de las marcas
 #
 #
 # Cargar datos de los centroides de las marcas desde github
@@ -136,7 +136,7 @@ str(ventana) # Revisar la estructura de la ventana
 plot(ventana$geometry, reset = TRUE)
 points(marcas$X, marcas$Y, pch = 20, col = marcas$Grupo)
 #
-# Vecino m�s cercano
+# Vecino más cercano
 # Calcular distancias al vecino mas cercano y la media
 #
 distNN <- nndist(marcas)
@@ -151,7 +151,7 @@ hist(distNN,
      probability = TRUE,
      xlab = "Distancia",
      ylab = " ",
-     main = "Histograma de las distancias al vecino m�s cercano")
+     main = "Histograma de las distancias al vecino más cercano")
 abline(v = media.obs,
        col = "red", lty = 5)
 lines(density(distNN))
@@ -203,7 +203,7 @@ t  <- (as.numeric(Media.esp) - media.obs)/SE
 P <- dt(t, df = n - 1)
 P
 #
-cat("Hay una confianza del", round((1-P), digits = 5)*100, "% de que el patrón agrupado no se deba a un error del muestreo")
+cat("Hay una confianza del", round((1-P), digits = 5)*100, "% de que el patrÃ³n agrupado no se deba a un error del muestreo")
 #
 # lista de resultados
 #
