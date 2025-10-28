@@ -14,7 +14,7 @@
 #
 ################################################################################
 #
-#    Script para la comparación de las tumbas superpuestas y no superpuestas
+#    Script para la comparaciÃ³n de las tumbas superpuestas y no superpuestas
 #
 #
 #
@@ -61,19 +61,19 @@ plot(ventana$geometry, reset = TRUE)
 points(tumbas_usme$X[tumbas_usme$a20cm == "Si"], tumbas_usme$Y[tumbas_usme$a20cm == "Si"], pch = 20, col = "gold")
 #
 #
-####### Análisis de tumbas a menos de 20 cm
+####### AnÃ¡lisis de tumbas a menos de 20 cm
 #
-# Tabla del número de tumbas por grupo
+# Tabla del nÃºmero de tumbas por grupo
 #
 super <- table(tumbas_usme$a20cm) 
 #
 super # Imprimir
 #
-# De las 61 tumbas, 32 están fuera de los grupos y 29 al interior
+# De las 61 tumbas, 32 estÃ¡n fuera de los grupos y 29 al interior
 #
-41/61 # 67.2% están superpuestas
+41/61 # 67.2% estÃ¡n superpuestas
 #
-# Análisis de las tumbas
+# AnÃ¡lisis de las tumbas
 #
 # 1) Sexo
 #
@@ -124,7 +124,7 @@ assocstats(resumen) # V de Cramer = 0.199
 # Las diferencias entre los dos grupos con respecto al sexo es poco significativa
 # Las diferencias no son muy fuertes
 #
-# 3) Orientación
+# 3) OrientaciÃ³n
 #
 # Tabla de frecuencias
 #
@@ -189,7 +189,7 @@ round(chichi$expected, 2)
 #
 assocstats(resumen) # V de Cramer = 0.066 es cercana a 0
 #
-# revisar variables numéricas
+# revisar variables numÃ©ricas
 #
 #
 # 6) MArcas
