@@ -14,7 +14,7 @@
 #
 ################################################################################
 #
-#           Script para la comapraciÛn de los dos grupos de casas
+#           Script para la comapraci√≥n de los dos grupos de casas
 #
 #
 #
@@ -28,7 +28,7 @@ library(aplpack) # stem.leaf.backback()
 #
 #
 #
-# Parte 1: comparaciÛn de las huellas de postes de los dos grupos
+# Parte 1: comparaci√≥n de las huellas de postes de los dos grupos
 #
 # Cargar datos de huellas de postes
 #
@@ -46,17 +46,17 @@ postes_usme$grupo <- c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
   2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1)
 #
 #
-str(postes_usme) # Hay ·rea pero no hay di·metro
+str(postes_usme) # Hay √°rea pero no hay di√°metro
 #
 # Crear la variables diametro
 #
-# Media del di·metro
+# Media del di√°metro
 #
-postes_usme$diametro <- 2*sqrt(postes_usme$Area/pi)*100 # Calcular di·metro
+postes_usme$diametro <- 2*sqrt(postes_usme$Area/pi)*100 # Calcular di√°metro
 #
-# Calcular la media del di·metro
+# Calcular la media del di√°metro
 #
-mean(postes_usme$diametro) # Media del di·metro en cm
+mean(postes_usme$diametro) # Media del di√°metro en cm
 #
 # Rangos de error al 95% 
 #
@@ -69,7 +69,7 @@ RE.obs <- EE.obs*t95.obs
 RE.obs # Imprimir el rango
 #
 # 
-# Comparar di·metros de ambos grupos
+# Comparar di√°metros de ambos grupos
 #
 #
 stem.leaf.backback(postes_usme$diametro[postes_usme$grupo == 1], 
@@ -109,11 +109,11 @@ RE.o # 2.21
 t.test(postes_usme$diametro ~ postes_usme$grupo)
 #
 # t = 5.6796, df = 30.347, p-value = 3.292e-06
-# Hay diferencias significativas entre el di·metro de las huellas de los dos grupos
+# Hay diferencias significativas entre el di√°metro de las huellas de los dos grupos
 #
 #
 #
-# Parte 2: comparaciÛn de las tumbas de los dos grupos
+# Parte 2: comparaci√≥n de las tumbas de los dos grupos
 #
 # Cargar datos de los centroides de los tumbas desde github
 #
@@ -130,14 +130,14 @@ tumbas_usme$Grupo <- c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
   2, 2, 2, 2, 2, 2, 2, 2, 1)
 #
 #
-# ComparaciÛn de las variables seg˙n los grupos
+# Comparaci√≥n de las variables seg√∫n los grupos
 #
 # Revisar variables disponibles en la tabla
 #
 head(tumbas_usme, 0)
 #
 #
-# A) Revisar las variables de categorÌas
+# A) Revisar las variables de categor√≠as
 #
 # 1) Sexo
 #
@@ -191,7 +191,7 @@ assocstats(resumen) # V de Cramer = 0.145
 # Las diferencias entre los dos grupos con respecto al sexo es poco significativa
 # Las diferencias no son muy fuertes
 #
-# 3) OrientaciÛn
+# 3) Orientaci√≥n
 #
 # Tabla de frecuencias
 #
@@ -263,7 +263,7 @@ chisq.test(resumen) # Chi cuadrado = 1.276, df = 2, p = 0.5283
 round(chisq.test(resumen)$expected, 2)
 #
 assocstats(resumen) # V de Cramer = 0.151 
-# revisar variables numÈricas
+# revisar variables num√©ricas
 #
 # 6) Marcas
 # Tabla de frecuencias
@@ -313,14 +313,14 @@ round(chisq.test(Superposicion)$expected, 2)
 #
 assocstats(Superposicion) # V de Cramer = 0.304 
 # 
-# ⁄nicamente hay diferencias en el n˙mero de tumbas superpuestas en los dos grupos
+# √önicamente hay diferencias en el n√∫mero de tumbas superpuestas en los dos grupos
 #
 #
-# B) revisar variables numÈricas
+# B) revisar variables num√©ricas
 #
 head(tumbas_usme, 0)
 #
-# Media de todas las variables numÈricas
+# Media de todas las variables num√©ricas
 #
 media_grupos <- tumbas_usme %>% group_by(Grupo) %>% 
   summarize_at(vars(Edad_err, Edad, Ollas, Jarras, Copas,  Mocasines, ceramicas, 
@@ -328,7 +328,7 @@ media_grupos <- tumbas_usme %>% group_by(Grupo) %>%
                     Felidae, humanos), ~ mean(.,na.rm=TRUE))
 print(media_grupos)
 #
-# Suma de todas las variables numÈricas
+# Suma de todas las variables num√©ricas
 #
 sum_grupos <- tumbas_usme %>% group_by(Grupo) %>% 
   summarize_at(vars(Ollas, Jarras, Copas,  Mocasines, ceramicas, 
@@ -336,14 +336,14 @@ sum_grupos <- tumbas_usme %>% group_by(Grupo) %>%
                     Felidae, humanos), ~ sum(.,na.rm=TRUE))
 print(sum_grupos)
 #
-# Proporciones de la suma de las variables numÈricas por grupo
+# Proporciones de la suma de las variables num√©ricas por grupo
 #
 resumen_p <- as.data.frame(sum_grupos)
 resumen_p[1,] <- sum_grupos[1,] %>% proportions() 
 resumen_p[2,] <- sum_grupos[2,] %>% proportions()
 round(resumen_p*100, 2) 
 #
-# M·ximo de todas las variables numÈricas
+# M√°ximo de todas las variables num√©ricas
 #
 max_grupos <- tumbas_usme %>% group_by(Grupo) %>% 
   summarize_at(vars(Ollas, Jarras, Copas,  Mocasines, ceramicas, 
@@ -353,7 +353,7 @@ print(max_grupos)
 #
 #
 # 
-# Comparar proporciones de cer·micas
+# Comparar proporciones de cer√°micas
 # 
 ceramica_grupos <- sum_grupos %>% select(Jarras, Copas, Ollas, Mocasines)
 ceramica_grupos # imprimir
