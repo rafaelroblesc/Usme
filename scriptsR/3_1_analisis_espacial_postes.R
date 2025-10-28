@@ -14,8 +14,8 @@
 #
 ################################################################################
 #
-#       Script para el análisis espacial de las huellas de poste de la 
-#     comunidad local de Usme. Análisis del vecino más cercano y k medias
+#       Script para el anÃ¡lisis espacial de las huellas de poste de la 
+#     comunidad local de Usme. AnÃ¡lisis del vecino mÃ¡s cercano y k medias
 #
 #
 # Paquetes necesarios: sf, spatstat y ggplot2
@@ -26,7 +26,7 @@ library(ggplot2) # ggplot()
 #
 #
 #
-# Parte 1: Vecino mas cercano. Script basado en González (2019)
+# Parte 1: Vecino mas cercano. Script basado en GonzÃ¡lez (2019)
 #
 # Cargar datos de los centroides de los postes desde github
 #
@@ -127,7 +127,7 @@ t  <- (as.numeric(Media.esp) - media.obs)/SE
 P <- dt(t, df = n - 1)
 P
 #
-cat("Hay una confianza del", round((1-P), digits = 5)*100, "% de que el patrón agrupado no se deba a un error del muestreo")
+cat("Hay una confianza del", round((1-P), digits = 5)*100, "% de que el patrÃ³n agrupado no se deba a un error del muestreo")
 #
 # lista de resultados
 #
@@ -150,7 +150,7 @@ resultado # Imprimir la lista
 medias <- rbind(media_observada = resultado$media_observada,
                 media_esperada = resultado$media_esperada)
 #
-categorias <- factor(rownames(medias)) # Extraer nombres de categorías
+categorias <- factor(rownames(medias)) # Extraer nombres de categorÃ­as
 catn <- length(levels(categorias))
 #
 plot(1:catn,
@@ -179,7 +179,7 @@ axis(side = 1,
 #
 #
 #
-# Parte 2: K medias, basado en González (2019)
+# Parte 2: K medias, basado en GonzÃ¡lez (2019)
 #
 # Plano de densidad de las huellas de poste
 #
